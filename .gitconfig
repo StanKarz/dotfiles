@@ -1,0 +1,22 @@
+[user]
+	name = Stan
+	email = 60108739+StanKarz@users.noreply.github.com
+[color]
+	ui = true
+[core]
+	editor = code --wait
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[merge]
+	tool = vscode
+[mergetool "vscode"]
+	cmd = "code --wait "
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[alias]
+	graph = log --all --graph --decorate --oneline
