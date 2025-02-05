@@ -172,3 +172,5 @@ unset __conda_setup
 
 eval "$(starship init zsh)"
 source /Users/stan/.config/broot/launcher/bash/br
+
+. "$HOME/.local/bin/env"
