@@ -254,7 +254,7 @@ A common gotcha: editing the new dotfile but forgetting to actually replace the 
 
 It's not supposed to. Tab does filesystem/command completion; the grey text is autosuggestions. Use Right arrow for the suggestion, Tab for completion. See the Shell shortcuts table above.
 
-**Another useful reference guid for shell tricks & tips**: https://blog.hofstede.it/shell-tricks-that-actually-make-life-easier-and-save-your-sanity/
+**Another useful reference guide for shell tricks & tips**: https://blog.hofstede.it/shell-tricks-that-actually-make-life-easier-and-save-your-sanity/
 
 ## Updating
 
