@@ -16,9 +16,24 @@
 	cmd = "code --wait "
 [diff]
 	tool = vscode
+	colorMoved = default
 [difftool "vscode"]
 	cmd = code --wait --diff $LOCAL $REMOTE
 [alias]
 	graph = log --all --graph --decorate --oneline
-[http]
-	postBuffer = 157286400
+	last = log -1 HEAD --stat
+	unstage = reset HEAD --
+	amend = commit --amend --no-edit
+	undo = reset --soft HEAD~1
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
+[pull]
+	rebase = true
+[fetch]
+	prune = true
+[rebase]
+	autoStash = true
+[credential]
+	helper = osxkeychain

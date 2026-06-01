@@ -1,42 +1,11 @@
 [aws]
-symbol = "  "
 disabled = true
 
 [gcloud]
 disabled = true
 
-[buf]
-symbol = " "
-
-[c]
-symbol = " "
-
-[conda]
-symbol = " "
-
-[crystal]
-symbol = " "
-
-[dart]
-symbol = " "
-
 [directory]
 read_only = " 󰌾"
-
-[docker_context]
-symbol = " "
-
-[elixir]
-symbol = " "
-
-[elm]
-symbol = " "
-
-[fennel]
-symbol = " "
-
-[fossil_branch]
-symbol = " "
 
 [git_branch]
 symbol = " "
@@ -44,136 +13,79 @@ symbol = " "
 [git_commit]
 tag_symbol = '  '
 
-[golang]
-symbol = " "
-
-[guix_shell]
-symbol = " "
-
-[haskell]
-symbol = " "
-
-[haxe]
-symbol = " "
-
-[hg_branch]
-symbol = " "
-
 [hostname]
 ssh_symbol = " "
-
-[java]
-symbol = " "
-
-[julia]
-symbol = " "
-
-[kotlin]
-symbol = " "
-
-[lua]
-symbol = " "
-
-[memory_usage]
-symbol = "󰍛 "
-
-[meson]
-symbol = "󰔷 "
-
-[nim]
-symbol = "󰆥 "
-
-[nix_shell]
-symbol = " "
-
-[nodejs]
-symbol = " "
-
-[ocaml]
-symbol = " "
-
-[os.symbols]
-Alpaquita = " "
-Alpine = " "
-AlmaLinux = " "
-Amazon = " "
-Android = " "
-Arch = " "
-Artix = " "
-CentOS = " "
-Debian = " "
-DragonFly = " "
-Emscripten = " "
-EndeavourOS = " "
-Fedora = " "
-FreeBSD = " "
-Garuda = "󰛓 "
-Gentoo = " "
-HardenedBSD = "󰞌 "
-Illumos = "󰈸 "
-Kali = " "
-Linux = " "
-Mabox = " "
-Macos = " "
-Manjaro = " "
-Mariner = " "
-MidnightBSD = " "
-Mint = " "
-NetBSD = " "
-NixOS = " "
-OpenBSD = "󰈺 "
-openSUSE = " "
-OracleLinux = "󰌷 "
-Pop = " "
-Raspbian = " "
-Redhat = " "
-RedHatEnterprise = " "
-RockyLinux = " "
-Redox = "󰀘 "
-Solus = "󰠳 "
-SUSE = " "
-Ubuntu = " "
-Unknown = " "
-Void = " "
-Windows = "󰍲 "
-
-[package]
-symbol = "󰏗 "
-
-[perl]
-symbol = " "
-
-[php]
-symbol = " "
-
-[pijul_channel]
-symbol = " "
 
 [python]
 symbol = " "
 
-[rlang]
-symbol = "󰟔 "
+[conda]
+symbol = " "
 
-[ruby]
-symbol = " "
+[nodejs]
+symbol = " "
 
-[rust]
-symbol = "󱘗 "
+[c]
+symbol = " "
 
-[scala]
-symbol = " "
-
-[swift]
-symbol = " "
-
-[zig]
-symbol = " "
-
-[gradle]
-symbol = " "
+[package]
+symbol = "󰏗 "
 
 [battery]
 full_symbol = '🔋 '
 charging_symbol = '⚡️ '
 discharging_symbol = '💀 '
+[os.symbols]
+Macos = " "
+
+# Custom modules for languages/frameworks without built-in starship support.
+# Show only when matching files are present in the cwd.
+[custom.html]
+detect_extensions = ["html", "htm"]
+symbol = " "
+format = "[$symbol]($style)"
+style = "bold #e34c26"
+command = ""
+
+[custom.css]
+detect_extensions = ["css", "scss", "sass", "less"]
+symbol = " "
+format = "[$symbol]($style)"
+style = "bold #1572b6"
+command = ""
+
+[custom.sql]
+detect_extensions = ["sql"]
+symbol = " "
+format = "[$symbol]($style)"
+style = "bold #00758f"
+command = ""
+
+[custom.bash]
+detect_extensions = ["sh", "bash", "zsh"]
+symbol = " "
+format = "[$symbol]($style)"
+style = "bold green"
+command = ""
+
+[custom.astro]
+detect_files = ["astro.config.mjs", "astro.config.ts", "astro.config.cjs", "astro.config.js"]
+symbol = "🚀 "
+format = "[$symbol]($style)"
+style = "bold #ff5d01"
+command = ""
+
+# Marimo: only show when an explicit marimo signal is present (not every .py dir).
+[custom.marimo]
+symbol = "🍃 "
+format = "[$symbol]($style)"
+style = "bold #16cdb6"
+when = "grep -q marimo pyproject.toml 2>/dev/null || grep -lq 'import marimo' *.py 2>/dev/null"
+command = ""
+
+[custom.cpp]
+detect_extensions = ["cpp", "hpp", "cc", "hh", "cxx", "hxx", "c++"]
+symbol = " "
+format = "[$symbol]($style)"
+style = "bold #00599c"
+command = ""
