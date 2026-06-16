@@ -13,6 +13,16 @@ plugins=(
 # Source Oh My Zsh (also runs compinit)
 source $ZSH/oh-my-zsh.sh
 
+# ---------- Editor ----------
+# Vim is the default editor for actual file editing (git commit messages, less,
+# crontab, etc.). The command line itself stays in emacs mode on purpose:
+# Ctrl-A/Ctrl-E, Alt-B/Alt-F and friends are the readline defaults and far
+# handier on a one-line prompt than modal editing. (bindkey -e is explicit so
+# EDITOR=vim doesn't trigger zsh's vi-mode auto-detection.)
+export EDITOR=vim
+export VISUAL=vim
+bindkey -e
+
 # ---------- Completion ----------
 unsetopt flowcontrol
 setopt auto_menu          # show completion menu on successive tab press
