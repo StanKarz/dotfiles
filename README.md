@@ -9,6 +9,7 @@ My personal dotfiles for macOS, managed as symlinks from `~/dotfiles` into `$HOM
 | `.zshrc`        | `~/.zshrc`                | Zsh config: Oh My Zsh, plugins, history, tools |
 | `.gitconfig`    | `~/.gitconfig`            | Git user, aliases, credential helper           |
 | `.tmux.conf`    | `~/.tmux.conf`            | tmux key bindings, plugins, status bar         |
+| `.vimrc`        | `~/.vimrc`                | Vim: syntax, indentation, search, clipboard    |
 | `starship.toml` | `~/.config/starship.toml` | Starship prompt theming                        |
 | `install.sh`    | —                          | Symlink installer (see below)                  |
 

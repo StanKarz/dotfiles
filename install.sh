@@ -27,12 +27,14 @@ backup_if_exists() {
 backup_if_exists "$HOME/.gitconfig"
 backup_if_exists "$HOME/.zshrc"
 backup_if_exists "$HOME/.tmux.conf"
+backup_if_exists "$HOME/.vimrc"
 backup_if_exists "$HOME/.config/starship.toml"
 
 # Create symlinks (-s = symbolic, -f = force overwrite existing symlink)
 ln -sf "$DOTFILES_DIR/.gitconfig"    "$HOME/.gitconfig"
 ln -sf "$DOTFILES_DIR/.zshrc"        "$HOME/.zshrc"
 ln -sf "$DOTFILES_DIR/.tmux.conf"    "$HOME/.tmux.conf"
+ln -sf "$DOTFILES_DIR/.vimrc"        "$HOME/.vimrc"
 ln -sf "$DOTFILES_DIR/starship.toml" "$HOME/.config/starship.toml"
 
 echo "Dotfiles installed successfully!"
