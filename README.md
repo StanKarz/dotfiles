@@ -11,6 +11,7 @@ My personal dotfiles for macOS, managed as symlinks from `~/dotfiles` into `$HOM
 | `.tmux.conf`    | `~/.tmux.conf`            | tmux key bindings, plugins, status bar         |
 | `.vimrc`        | `~/.vimrc`                | Vim: syntax, indentation, search, clipboard    |
 | `starship.toml` | `~/.config/starship.toml` | Starship prompt theming                        |
+| `.gitignore_global` | `~/.config/git/ignore` | Global gitignore: OS/editor junk, Python caches |
 | `install.sh`    | —                          | Symlink installer (see below)                  |
 
 ## Quick start (new machine)
