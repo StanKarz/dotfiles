@@ -34,6 +34,28 @@ set smartcase             " ...unless the pattern contains a capital letter
 " <leader> then Space (i.e. Space Space) clears the leftover search highlight
 nnoremap <silent> <leader><Space> :nohlsearch<CR>
 
+" Centre the current match on screen and open any folds over it
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" ---------- Highlight overrides ----------
+" Custom colours for built-in highlight groups. Set once now so they apply
+" immediately, and re-applied on every :colorscheme change — loading a scheme
+" resets all highlight groups, so without the autocmd these tweaks get wiped.
+"   CurSearch   - the match the cursor is sitting on (bold red, stands out)
+"   ColorColumn - the line-length guide enabled for Python below (soft blue)
+" Note: with no `colorscheme` line loaded, Vim renders via the terminal's ANSI
+" palette, so the ctermbg value is what you actually see. guibg only applies if
+" you ever add `set termguicolors`; it's here so the blue survives that switch.
+highlight CurSearch   ctermfg=white ctermbg=red cterm=bold guifg=#ffffff guibg=#e64545 gui=bold
+highlight ColorColumn ctermbg=24 guibg=#33415e
+
+augroup custom_highlights
+  autocmd!
+  autocmd ColorScheme * highlight CurSearch   ctermfg=white ctermbg=red cterm=bold guifg=#ffffff guibg=#e64545 gui=bold
+  autocmd ColorScheme * highlight ColorColumn ctermbg=24 guibg=#33415e
+augroup END
+
 " ---------- Indentation (sensible defaults; per-language tweaks further down) ----------
 set autoindent            " new lines inherit the previous line's indent
 set expandtab             " insert spaces, never literal tab characters
@@ -64,7 +86,8 @@ endfor
 " ---------- Per-language settings ----------
 augroup filetype_settings
   autocmd!
-  " Python: PEP 8 4-space indent is already the default above; add a width guide.
+  " Python: PEP 8 4-space indent is already the default above; add an 88-column
+  " width guide (Black's wrap limit — its colour is set in Highlight overrides).
   " (marimo notebooks are plain .py files, so this covers them too.)
   autocmd FileType python setlocal textwidth=88 colorcolumn=88
   " Markdown: soft-wrap prose and enable spell-check.
@@ -76,4 +99,5 @@ augroup END
 " ---------- Quality of life ----------
 set confirm               " prompt to save instead of erroring when :q has unsaved changes
 set splitbelow splitright " new splits open below / to the right (more intuitive)
-nnoremap <leader>w :w<CR> " Space w to save (a gentler reach than :w)
+" Space w to save (a gentler reach than :w)
+nnoremap <leader>w :w<CR>
