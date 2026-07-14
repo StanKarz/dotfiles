@@ -84,6 +84,17 @@ eval "$(zoxide init zsh)"
 # fzf (Ctrl+R: fuzzy history, Ctrl+T: fuzzy file picker, Alt+C: fuzzy cd)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# ---------- tmux ----------
+# Auto-start tmux: each new terminal window gets its own independent session.
+# Skips if already inside tmux, over SSH, or in an embedded terminal (VS Code).
+# Not exec'd on purpose: if tmux ever fails to start, you still get a shell,
+# and exiting/detaching tmux drops you back to plain zsh instead of closing
+# the window.
+if [[ -z "$TMUX" && -z "$SSH_CONNECTION" && "$TERM_PROGRAM" != "vscode" ]] \
+   && [[ -t 1 ]] && command -v tmux &> /dev/null; then
+  tmux new-session
+fi
+
 # ---------- Aliases ----------
 alias lt='eza -T --icons'
 alias ciaclean='git branch --merged origin/main | grep -vE "^\* |^[[:space:]]+(main|develop)$" | xargs -n 1 git branch -d'
