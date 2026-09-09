@@ -98,3 +98,13 @@ fi
 # ---------- Aliases ----------
 alias lt='eza -T --icons'
 alias ciaclean='git branch --merged origin/main | grep -vE "^\* |^[[:space:]]+(main|develop)$" | xargs -n 1 git branch -d'
+
+# ---------- mission control ----------
+# `mc` is installed as a real command (uv tool install mission-control), so it
+# needs no wrapper — and a real binary inherits $TMUX_PANE, which `mc resume`
+# needs to work out which pane is "the one left of the roster".
+export MC_CONFIG="$HOME/dotfiles/progress.toml"
+
+# Morning layout: work on the left, mission control on the right.
+# -d keeps focus in the left pane so you can start typing straight away.
+work() { tmux split-window -h -l 40% -d -c "$PWD" "mc"; }
