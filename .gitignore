@@ -1,3 +1,8 @@
 .DS_Store
 *.backup.*
 .claude/
+
+# Mission control's state file: a personal inventory of local projects,
+# not configuration. MC_CONFIG (see .zshrc) points `mc` here; generate it
+# on a new machine with `mc init`.
+progress.toml
