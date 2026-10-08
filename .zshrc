@@ -111,4 +111,6 @@ export MC_CONFIG="$HOME/dotfiles/progress.toml"
 
 # Morning layout: work on the left, mission control on the right.
 # -d keeps focus in the left pane so you can start typing straight away.
-work() { tmux split-window -h -l 40% -d -c "$PWD" "mc"; }
+# two panes: shell here, roster beside it. Reuses an existing split rather
+# than adding a third pane.
+work() { mc work; }
