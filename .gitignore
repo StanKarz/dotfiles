@@ -6,3 +6,8 @@
 # not configuration. MC_CONFIG (see .zshrc) points `mc` here; generate it
 # on a new machine with `mc init`.
 progress.toml
+
+# Claude Code's global preferences: a personal profile (employers, education,
+# what I'm working towards), and this repo is public. Kept on disk and
+# symlinked by install.sh, never committed.
+claude/CLAUDE.md
