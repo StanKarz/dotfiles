@@ -98,6 +98,10 @@ fi
 # ---------- Aliases ----------
 alias lt='eza -T --icons'
 alias ciaclean='git branch --merged origin/main | grep -vE "^\* |^[[:space:]]+(main|develop)$" | xargs -n 1 git branch -d'
+# Keep the Mac from idle-sleeping while a Claude Code session is open (a sleep
+# mid-response kills the stream). -i only blocks idle system sleep: the display
+# still sleeps and the screen still locks. Lid-close sleep is not prevented.
+alias claude='caffeinate -i claude'
 
 # ---------- mission control ----------
 # `mc` is installed as a real command (uv tool install mission-control), so it
