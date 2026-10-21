@@ -27,10 +27,15 @@ Five check types exist. Nothing else does:
 - Otherwise match the current directory against `path` in `progress.toml`
   (longest-prefix match if it's a subdirectory) — the same resolution
   `mc brief` does.
-- If nothing matches, this is a new project: ask whether to run `mc new <name>`
-  first (in `~/Desktop/projects/tui-mission-control`, `uv run python -m
-  mission_control new <name>`) or whether the directory/entry already exists
-  under a different name.
+- If nothing matches, the project is not tracked yet. Which command depends on
+  whether the directory already exists, and they are not interchangeable:
+  - **It exists** (the usual case: you made the directory, opened Claude Code
+    here, and ran this): `mc add` with no argument tracks the current
+    directory. `mc new` refuses outright on a directory that exists.
+  - **It does not exist**: `mc new <name>` makes it, runs `git init` and
+    tracks it in one go.
+  Check first that it is not already tracked under a different name, since a
+  project is keyed by name but matched by `path`.
 
 Read the project's current block, including any existing
 `[[projects."name".checks]]`. If checks already exist, say what's there and
