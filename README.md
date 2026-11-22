@@ -14,7 +14,6 @@ My personal dotfiles for macOS, managed as symlinks from `~/dotfiles` into `$HOM
 | `.gitignore_global` | `~/.config/git/ignore` | Global gitignore: OS/editor junk, Python caches |
 | `claude/settings.json` | `~/.claude/settings.json` | Claude Code: permissions, hooks, model |
 | `claude/keybindings.json` | `~/.claude/keybindings.json` | Claude Code: key bindings |
-| `claude/skills/init-project/SKILL.md` | `~/.claude/skills/init-project/SKILL.md` | `/init-project` skill: turns project goals into a mission-control checklist |
 | `install.sh`    | —                          | Symlink installer (see below)                  |
 
 `~/.claude/CLAUDE.md` is **not** in this repo. It is a personal profile rather
@@ -75,9 +74,9 @@ The script is safe to re-run. It:
 2. Creates `~/.config/` and `~/.claude/skills/` if missing.
 3. For each target file (`.zshrc`, `.gitconfig`, etc.), if a **real file** exists there (not already a symlink), it's moved aside to `<file>.backup.<timestamp>` so nothing is silently overwritten.
 4. Creates symlinks pointing each target to the corresponding file in `~/dotfiles`.
-   Only files are linked, never directories: a linked skill directory would swallow
-   anything Claude Code writes next to `SKILL.md`, and a backed-up copy of it shows
-   up as a second skill called `init-project.backup.<timestamp>`.
+5. Runs `mc install-skill` if [mission control](https://github.com/StanKarz/mission-control)
+   is installed, which links its `/init-project` skill into `~/.claude/skills/`.
+   The skill lives in that repo, next to the code it describes.
 
 This means any edits made in `~/dotfiles/.zshrc` are immediately reflected in `~/.zshrc`, and you can keep the dotfiles repo under version control as the single source of truth.
 

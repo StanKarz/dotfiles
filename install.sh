@@ -52,14 +52,13 @@ ln -sf "$DOTFILES_DIR/.gitignore_global" "$HOME/.config/git/ignore"
 ln -sf "$DOTFILES_DIR/claude/settings.json"    "$HOME/.claude/settings.json"
 ln -sf "$DOTFILES_DIR/claude/keybindings.json" "$HOME/.claude/keybindings.json"
 
-# The skill directory itself stays real and only SKILL.md is linked. Linking the
-# directory also works, but then anything Claude Code adds beside SKILL.md lands
-# in the repo, and a backup copy of the directory registers as a second skill
-# with a `.backup.<timestamp>` name.
-mkdir -p "$HOME/.claude/skills/init-project"
-backup_if_exists "$HOME/.claude/skills/init-project/SKILL.md"
-ln -sf "$DOTFILES_DIR/claude/skills/init-project/SKILL.md" \
-       "$HOME/.claude/skills/init-project/SKILL.md"
+# The /init-project skill ships with mission control, which links it into
+# ~/.claude/skills itself. Without mc installed yet, say so rather than fail.
+if command -v mc >/dev/null 2>&1; then
+    mc install-skill || echo "note: mc install-skill did not link /init-project; see its message above"
+else
+    echo "note: mc is not installed, so /init-project was not linked (run mc install-skill later)"
+fi
 
 # CLAUDE.md is gitignored, so a fresh clone will not have it: link it when a
 # copy is present and say so when it is not, rather than failing the install.
